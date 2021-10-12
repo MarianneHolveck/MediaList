@@ -1,22 +1,17 @@
 # User stories
 
-Fiche récap : https://kourou.oclock.io/ressources/fiche-recap/user-stories/#sp%c3%a9cifications
-
 
 | En tant que | Je veux | Afin de (si besoin/nécessaire) |
 |--|--|--|
-| visiteur | pouvoir consulter la liste des tâches | - |
-| visiteur | pouvoir ajouter une tâche à la liste | - |
-| visiteur | pouvoir modifier le nom d'une tâche | - |
-| visiteur | pouvoir marquer une tâche comme "complète" | - |
-| visiteur | pouvoir marquer une tâche comme "incomplète" | - |
-| visiteur | pouvoir visualiser uniquement les tâches complètes | - |
-| visiteur | pouvoir visualiser uniquement les tâches incomplètes | - |
-| visiteur | pouvoir visualiser uniquement les tâches d'une catégorie particulière | - |
-| visiteur | pouvoir archiver une tâche | - |
-| visiteur | pouvoir supprimer une tâche archivée | - |
+| visiteur | pouvoir consulter la liste des médias | - |
+| visiteur | pouvoir ajouter un média à la liste | - |
+| visiteur | pouvoir modifier le nom d'un média | - |
+| visiteur | pouvoir marquer un media comme 'vu' | - |
+| visiteur | pouvoir marquer un comme non 'vu' | - |
+| visiteur | pouvoir visualiser uniquement les médias vus | - |
+| visiteur | pouvoir visualiser uniquement les médias non vus | - |
+| visiteur | pouvoir visualiser uniquement les médias d'une catégorie particulière | - |
+| visiteur | pouvoir supprimer un média | - |
 | visiteur | pouvoir ajouter une catégorie | - |
 | visiteur | pouvoir modifier le nom d'une catégorie | - |
 | visiteur | pouvoir supprimer une catégorie | - |
-| visiteur | pouvoir renseigner un pourcentage de réalisation d'une tâche | - |
-| visiteur | pouvoir visualiser le pourcentage de complétion d'une tâche | - |

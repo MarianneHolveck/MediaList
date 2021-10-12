@@ -8,16 +8,16 @@ let app = {
   init: function () {
     console.log("Module app chargé");
 
-    // Initialisation du module tasksList
-    tasksList.init();
+    // Initialisation du module mediasList
+    mediasList.init();
 
-    // Initialisation du module newTaskForm
-    newTaskForm.init();
+    // Initialisation du module newMediaForm
+    newMediaForm.init();
 
     // Initialisation du module categoriesList
     categoriesList.init();
 
-    filters.init();
+    // filters.init();
 
   }
 

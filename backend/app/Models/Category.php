@@ -20,15 +20,16 @@ class Category extends Model // Et on en hérite
     // déduire automatiquement les propriétés du modèle Category !
 
     // En écrivant cette méthode, cela permet de définir une relation
-    // entre les modèles Category et Task.    //
+    // entre les modèles Category et Media.    //
     // Grâce à cette relation :
     //   => on sera capable d'aller chercher à la demande toutes les tâches
     // liées à une catégorie    //
     // Et comme il peut y avoir plusieurs tâches dans une catégorie donnée :
     //   => on a donc une relation de type => One to many    //
     // https://laravel.com/docs/6.x/eloquent-relationships#one-to-many
-    public function tasks()
+
+    public function media()
     {
-        return $this->hasMany('App\Models\Task');
+        return $this->hasMany('App\Models\Media');
     }
 }

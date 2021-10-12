@@ -44,53 +44,53 @@ $router->get(
 );
 
 //======================================
-// TaskController
+// MediaController
 //======================================
 
 $router->get(
-    '/tasks',
+    '/medias',
     [
-        'uses' => 'TaskController@list',
-        'as'   => 'task-list'
+        'uses' => 'MediaController@list',
+        'as'   => 'media-list'
     ]
 );
 
 $router->get(
-    '/tasks/{id}',
+    '/medias/{id}',
     [
-        'uses' => 'TaskController@item',
-        'as'   => 'task-item'
+        'uses' => 'MediaController@item',
+        'as'   => 'media-item'
     ]
 );
 
 $router->post(
-    '/tasks',
+    '/medias',
     [
-        'uses' => 'TaskController@store',
-        'as'   => 'task-store'
+        'uses' => 'MediaController@store',
+        'as'   => 'media-store'
     ]
 );
 
 $router->put(
-    '/tasks/{id}',
+    '/medias/{id}',
     [
-        'uses' => 'TaskController@update',
-        'as'   => 'task-update-put'
+        'uses' => 'MediaController@update',
+        'as'   => 'media-update-put'
     ]
 );
 
 $router->patch(
-    '/tasks/{id}',
+    '/medias/{id}',
     [
-        'uses' => 'TaskController@update',
-        'as'   => 'task-update-patch'
+        'uses' => 'MediaController@update',
+        'as'   => 'media-update-patch'
     ]
 );
 
 $router->delete(
-    '/tasks/{id}',
+    '/medias/{id}',
     [
-        'uses' => 'TaskController@delete',
-        'as'   => 'task-delete'
+        'uses' => 'MediaController@delete',
+        'as'   => 'media-delete'
     ]
 );

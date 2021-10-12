@@ -29,7 +29,7 @@ let categoriesList = {
         {
           // ENFIN j'ai accès aux données contenues dans la réponse
           // je peux en faire ce que j'en veux
-          // console.log( jsonContentFromResponse );
+          console.log( jsonContentFromResponse );
           categoriesList.createSelectFromCategories( jsonContentFromResponse );
         } );
       } );
@@ -51,14 +51,14 @@ let categoriesList = {
     createSelectFromCategories : function( jsonContentFromResponse )
     {
       // Création du select pour le filtre des tâches
-      let selectElementForTaskFilters = categoriesList.createSelectElement( jsonContentFromResponse, "Toutes les catégories", "filters__choice" );
+      let selectElementForMediaFilters = categoriesList.createSelectElement( jsonContentFromResponse, "Toutes les catégories", "filters__choice" );
       // Ajout de ce nouveau select à la page
-      document.querySelector( ".filters__task--category" ).appendChild( selectElementForTaskFilters );
+      document.querySelector( ".filters__media--category" ).appendChild( selectElementForMediaFilters );
   
       // Création du select pour le formulaire d'ajout de tâche
-      let selectElementForNewTaskForm = categoriesList.createSelectElement( jsonContentFromResponse, "Choisir une catégorie" );
+      let selectElementForNewMediaForm = categoriesList.createSelectElement( jsonContentFromResponse, "Choisir une catégorie" );
       // Ajout de ce nouveau select à la page
-      document.querySelector( ".task--add .task__category .select" ).appendChild( selectElementForNewTaskForm );
+      document.querySelector( ".media--add .media__category .select" ).appendChild( selectElementForNewMediaForm );
   
     },
   

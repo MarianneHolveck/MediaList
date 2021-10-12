@@ -5,13 +5,13 @@ namespace App\Models;
 // on utilise le CoreModel de Eloquent
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model // Et on en hérite
+class Media extends Model // Et on en hérite
 {
     public function category()
     {
 
         // En écrivant cette méthode, cela permet de définir une relation
-        // entre les modèles Task et Category.
+        // entre les modèles Media et Category.
         //
         // Grâce à cette relation  :
         //   => on pourra aller chercher les informations de la catégorie liée à la tâche

@@ -11,25 +11,25 @@
   margin-bottom: 0.5rem;
 }
 
-.filters__task--completion.buttons {
+.filters__media--completion.buttons {
   margin-bottom: 0.5rem;
 }
 
-.filters__task--archived {
+.filters__media--archived {
   margin-top: 1rem;
 }
 
-.task {
+.media {
   margin: 1.5rem 0 0 0;
 }
 
-.task,
-.task__button.button,
-.task__title-field {
+.media,
+.media__button.button,
+.media__title-field {
   font-size: 0.8rem;
 }
 
-.task__content {
+.media__content {
   padding: 0.5rem;
   border: solid 1px #ededed;
   display: flex;
@@ -38,107 +38,86 @@
   flex-wrap: wrap;
 }
 
-.task__title {
+.media__title {
   font-weight: 400;
   width: 35%;
 }
 
-.task__title-field {
+.media__title-field {
   display: none;
 }
 
-.task__category {
+.media__category {
   color: #b1b1b1;
 }
 
-.task__buttons {
+.media__buttons {
   margin-left: 1rem;
 }
 
-.progress-bar {
-  height: 0.4rem;
-  background-color: #ededed;
+.media__button--notseen,
+.media__button--delete {
+  display: flex;
 }
 
-.progress-bar__level {
-  height: 0.4rem;
-  background-color: #3298dc;
-}
-
-.task__button--desarchive,
-.task__button--incomplete,
-.task__button--delete {
+.media--edit .media__title-label {
   display: none;
 }
 
-.task--complete .task__title-label {
-  text-decoration: line-through;
-}
-
-.task--complete .task__button--validate {
-  display: none;
-}
-
-.task--complete .task__button--incomplete {
-  display: inline-block;
-}
-
-.task--edit .task__title-label {
-  display: none;
-}
-
-.task--edit .task__title-field {
+.media--edit .media__title-field {
   display: block;
   width: 90%;
 }
 
-.task--archive .task__content {
+.media--tosee .media__button--notseen {
+  display: none;
+}
+
+.media--seen .media__content {
+  display: flex;
   background-color: #f7f7f7;
   border: none;
 }
 
-.task--archive .task__title {
+.media--seen .media__title {
   color: #b1b1b1;
 }
 
-.task--archive .progress-bar__level {
-  background-color: #b1b1b1;
-}
-
-.task--archive .task__button--validate,
-.task--archive .task__button--modify,
-.task--archive .task__button--archive {
+.media--seen .media__button--validate {
   display: none;
 }
 
-.task--archive .task__button--desarchive,
-.task--archive .task__button--delete {
+.media__button--delete {
   display: inline-block;
 }
 
-.task--add .task__content {
+.media--seen .media__button--notseen {
+  display: inline-block;
+}
+
+.media--add .media__content {
   border-color: #78b6df;
 }
 
-.task--add .task__title {
+.media--add .media__title {
   width: 100%;
 }
 
-.task--add .task__category {
+.media--add .media__category {
   width: 100%;
   margin-top: 0.5rem;
 }
 
-.task--add .task__title-field {
+.media--add .media__title-field {
   display: block;
   width: 90%;
 }
 
-.task--add .task__buttons {
+.media--add .media__buttons {
   margin: 0.5rem 0 0 0;
 }
 
-.task--add .task__button {
+.media--add .media__button {
   font-size: 1rem;
 }
 
@@ -147,30 +126,30 @@
     padding: 1rem;
   }
 
-  .task,
-  .task__button.button,
-  .task__title-field {
+  .media,
+  .media__button.button,
+  .media__title-field {
     font-size: 0.9rem;
   }
 
-  .task__content {
+  .media__content {
     padding: 1rem;
   }
 
-  .task__title {
+  .media__title {
     font-size: 1rem;
   }
 
-  .task--add .task__title {
+  .media--add .media__title {
     width: 50%;
   }
 
-  .task--add .task__category {
+  .media--add .media__category {
     margin: 0;
     width: 30%;
   }
 
-  .task--add .task__buttons {
+  .media--add .media__buttons {
     width: 20%;
     text-align: right;
     margin: 0;
@@ -187,39 +166,39 @@
   .logo__title {
     margin-bottom: 0;
   }
-  
-  
+
+
   .filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
-  .filters__task--completion,
-  .filters__task--category {
+
+  .filters__media--completion,
+  .filters__media--category {
     margin-right: 1rem;
   }
-  
-  .filters__task--archived {
+
+  .filters__media--archived {
     margin-top: 0;
   }
 
-  .filters__task--completion {
+  .filters__media--completion {
     margin-bottom: 0;
     margin-top: 1rem;
   }
 
-  .task,
-  .task__button.button,
-  .task__title-field.input {
+  .media,
+  .media__button.button,
+  .media__title-field.input {
     font-size: 1rem;
   }
 
-  .task__title {
+  .media__title {
     width: 50%;
   }
 
-  .task__title-field {
+  .media__title-field {
     width: 60%;
   }
 }
