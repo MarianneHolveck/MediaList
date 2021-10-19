@@ -9,6 +9,7 @@ let media = {
    * @param {HTMLElement} mediaElement L'élément du DOM correspondant à la tâche
    */
   bindSingleMediaEvents: function (mediaElement) {
+    
     // -------------------------------------------------------------------
     // Ecoute de l'évènement permettant l'édition du titre de la tâche
     // -------------------------------------------------------------------
@@ -18,11 +19,23 @@ let media = {
     // -------------------------------------------------------------------
 
     // -------------------------------------------------------------------
-    // Ecoute des évènements permettant de marqué le média comme lu
+    // Ecoute des évènements permettant de marqué le média comme vu
     // -------------------------------------------------------------------
 
     // -------------------------------------------------------------------
-    // Ecoute des évènements permettant de le marqué comme pas lu
+    // Ecoute des évènements permettant de le marqué comme pas vu
+    // -------------------------------------------------------------------
+
+    // -------------------------------------------------------------------
+    // Ecoute des évènements permettant d'afficher tous les médias les medias
+    // -------------------------------------------------------------------
+
+    // -------------------------------------------------------------------
+    // Ecoute des évènements permettant d'afficher les medias vu
+    // -------------------------------------------------------------------
+
+    // -------------------------------------------------------------------
+    // Ecoute des évènements permettant d'afficher les medias pas vu
     // -------------------------------------------------------------------
 
     // -------------------------------------------------------------------
@@ -69,6 +82,19 @@ let media = {
 
     media.updateMediaCategoryName(newMediaElement, newMediaObject.category);
 
+    // on se base sur le status pour déterminer si le media est vu ou non
+    if (newMediaObject.status >= 2) {
+      media.markMediaAsSeen(newMediaElement);
+    }
+
+    //-------------------------------------------------------------------
+    // Enregistrement des écouteurs d'événement
+    //-------------------------------------------------------------------
+
+    // Pour que l'écoute d'un évènement se fasse comme il faut
+    media.bindSingleMediaEvents(newMediaElement);
+
+    // On renvoie l'element crée
     return newMediaElement;
   },
 
@@ -112,6 +138,23 @@ let media = {
     // Mise à jour de l'attribue data-category
     mediaElement.dataset.category = mediaCategoryObject.id;
 
+  },
+
+  markMediaAsSeen: function (mediaElement) {
+    // Récupération de l'id du media
+
+    mediaElement.classList.remove("media--tosee");
+
+    mediaElement.classList.add("media--seen");
+
+  },
+
+  markMediaAsNotSeen: function (mediaElement) {
+    // Récupération de l'id du media
+
+    mediaElement.classList.remove("media--seen");
+
+    mediaElement.classList.add("media--tosee");
   },
 
 
