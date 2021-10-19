@@ -15,8 +15,6 @@ let categoriesList = {
   
     loadCategoriesFromAPI : function()
     {
-      console.log( "loadCategoriesFromAPI" );
-  
       // J'envoi ma requete et je reçois une "promesse" de réponse
       let promise = fetch( app.apiRootURL + "/categories" );
   
@@ -29,7 +27,6 @@ let categoriesList = {
         {
           // ENFIN j'ai accès aux données contenues dans la réponse
           // je peux en faire ce que j'en veux
-          console.log( jsonContentFromResponse );
           categoriesList.createSelectFromCategories( jsonContentFromResponse );
         } );
       } );
