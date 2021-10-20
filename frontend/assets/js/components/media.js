@@ -32,9 +32,17 @@ let media = {
     // Ecoute des évènements permettant de marqué le média comme vu
     // -------------------------------------------------------------------
 
+    let mediaCompleteButtonElement = mediaElement.querySelector(".media__button--validate");
+
+    mediaCompleteButtonElement.addEventListener("click", media.handleSeenMedia);
+
     // -------------------------------------------------------------------
     // Ecoute des évènements permettant de le marqué comme pas vu
     // -------------------------------------------------------------------
+
+    let mediaNotCompleteButtonElement = mediaElement.querySelector(".media__button--notseen");
+
+    mediaNotCompleteButtonElement.addEventListener("click", media.handleNotSeenMedia);
 
     // -------------------------------------------------------------------
     // Ecoute des évènements permettant de supprimer un media
@@ -289,8 +297,90 @@ let media = {
         alert("Impossible de supprimer le media(" + response.status + "")
       }
     });
+  },
+
+  handleSeenMedia: function (evt) {
+
+    let mediaSeenButtonElement = evt.currentTarget;
+
+    let mediaElement = mediaSeenButtonElement.closest(".media")
+
+    let mediaId = mediaElement.dataset.id;
+
+    let data = {
+      status: 2
+    };
+
+    // On prépare les entêtes HTTP (headers) de la requête
+    // afin de spécifier que les données sont en JSON
+    const httpHeaders = new Headers();
+    httpHeaders.append("Content-Type", "application/json");
+
+    // On consomme l'API pour ajouter en DB
+    const fetchOptions = {
+      method: 'PATCH',
+      mode: 'cors',
+      cache: 'no-cache',
+      // On ajoute les headers dans les options
+      headers: httpHeaders,
+      // On ajoute les données, encodées en JSON, dans le corps de la requête
+      body: JSON.stringify(data)
+    };
+    // Je lance ma requete, sans oublier de fournir les options en 2e param ;)
+    let promise = fetch(app.apiRootURL + "/medias/" + mediaId, fetchOptions);
+
+    // Lorqu'on reçoit la réponse
+    promise.then(function (response) {
+      if (response.status === 204) {
+        media.markMediaAsSeen(mediaElement);
+      } else {
+        console.log("Error Fetch : " + response.status);
+        alert("Impossible d'archiver le media(" + response.status + "")
+      }
+    });
 
   },
 
+  handleNotSeenMedia: function (evt) {
+
+    let mediaNotSeenButtonElement = evt.currentTarget;
+
+    let mediaElement = mediaNotSeenButtonElement.closest(".media")
+
+    let mediaId = mediaElement.dataset.id;
+
+    let data = {
+      status: 1
+    };
+
+    // On prépare les entêtes HTTP (headers) de la requête
+    // afin de spécifier que les données sont en JSON
+    const httpHeaders = new Headers();
+    httpHeaders.append("Content-Type", "application/json");
+
+    // On consomme l'API pour ajouter en DB
+    const fetchOptions = {
+      method: 'PATCH',
+      mode: 'cors',
+      cache: 'no-cache',
+      // On ajoute les headers dans les options
+      headers: httpHeaders,
+      // On ajoute les données, encodées en JSON, dans le corps de la requête
+      body: JSON.stringify(data)
+    };
+    // Je lance ma requete, sans oublier de fournir les options en 2e param ;)
+    let promise = fetch(app.apiRootURL + "/medias/" + mediaId, fetchOptions);
+
+    // Lorqu'on reçoit la réponse
+    promise.then(function (response) {
+      if (response.status === 204) {
+        media.markMediaAsNotSeen(mediaElement);
+      } else {
+        console.log("Error Fetch : " + response.status);
+        alert("Impossible d'archiver le media(" + response.status + "")
+      }
+    });
+
+  },
 
 };
