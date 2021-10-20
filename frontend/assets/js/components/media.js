@@ -37,21 +37,12 @@ let media = {
     // -------------------------------------------------------------------
 
     // -------------------------------------------------------------------
-    // Ecoute des évènements permettant d'afficher tous les médias les medias
-    // -------------------------------------------------------------------
-
-    // -------------------------------------------------------------------
-    // Ecoute des évènements permettant d'afficher les medias vu
-    // -------------------------------------------------------------------
-
-    // -------------------------------------------------------------------
-    // Ecoute des évènements permettant d'afficher les medias pas vu
-    // -------------------------------------------------------------------
-
-    // -------------------------------------------------------------------
     // Ecoute des évènements permettant de supprimer un media
     // -------------------------------------------------------------------
 
+    let mediaDeleteButtonElement = mediaElement.querySelector(".media__button--delete");
+
+    mediaDeleteButtonElement.addEventListener("click", media.handleDeleteTask);
 
 
   },
@@ -254,6 +245,51 @@ let media = {
     if (evt.key === "Enter") {
       media.handleValidateNewMediaTitle(evt);
     }
+  },
+
+  handleDeleteTask: function (evt) {
+
+    let mediaDeleteButtonElement = evt.currentTarget;
+
+    let mediaElement = mediaDeleteButtonElement.closest(".media");
+
+    let mediaId = mediaElement.dataset.id;
+
+    let data = {
+
+    };
+
+    // On prépare les entêtes HTTP (headers) de la requête
+    // afin de spécifier que les données sont en JSON
+    const httpHeaders = new Headers();
+    httpHeaders.append("Content-Type", "application/json");
+
+    // On consomme l'API pour ajouter en DB
+    const fetchOptions = {
+      method: 'DELETE',
+      mode: 'cors',
+      cache: 'no-cache',
+      // On ajoute les headers dans les options
+      headers: httpHeaders,
+      // On ajoute les données, encodées en JSON, dans le corps de la requête
+      body: JSON.stringify(data)
+    };
+    // Je lance ma requete, sans oublier de fournir les options en 2e param ;)
+    let promise = fetch(app.apiRootURL + "/medias/" + mediaId, fetchOptions);
+
+    // Lorqu'on reçoit la réponse
+    promise.then(function (response) {
+      if (response.status === 204) {
+        // Modification du status de la tâche
+        // UNIQUEMENT si la requète API qui défini la tâche comme complétée
+        // m'indique qu'elle a fonctionné
+        alert("Le media a bien été supprimé")
+      } else {
+        console.log("Error Fetch : " + response.status);
+        alert("Impossible de supprimer le media(" + response.status + "")
+      }
+    });
+
   },
 
 
