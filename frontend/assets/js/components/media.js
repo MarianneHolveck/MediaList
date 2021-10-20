@@ -5,18 +5,28 @@ let media = {
   //======================================
 
   /**
-   * Ajoute tous les évènements liés à une tâche
-   * @param {HTMLElement} mediaElement L'élément du DOM correspondant à la tâche
+   * Ajoute tous les évènements liés à un media
+   * @param {HTMLElement} mediaElement L'élément du DOM correspondant au media
    */
   bindSingleMediaEvents: function (mediaElement) {
-    
+
     // -------------------------------------------------------------------
     // Ecoute de l'évènement permettant l'édition du titre de la tâche
     // -------------------------------------------------------------------
 
+    let mediaTitleLabelElement = mediaElement.querySelector(".media__title-label");
+
+    mediaTitleLabelElement.addEventListener("click", media.handleEnableMediaTitleEditMode);
+
     // -------------------------------------------------------------------
     // Ecoute des évènements permettant de valider le nouveau nom de la tâche
     // -------------------------------------------------------------------
+
+    let mediaTitleFieldElement = mediaElement.querySelector(".media__title-field");
+
+    mediaTitleFieldElement.addEventListener('blur', media.handleValidateNewMediaTitle);
+
+    mediaTitleFieldElement.addEventListener('keydown', media.handleValidateNewMediaTitleOnKeydown);
 
     // -------------------------------------------------------------------
     // Ecoute des évènements permettant de marqué le média comme vu
@@ -157,6 +167,94 @@ let media = {
     mediaElement.classList.add("media--tosee");
   },
 
+  /**
+   * Méthode gérant le passage en mode édition du titre du media
+   * @param {Event} evt 
+   */ // handleValidateNewMediaTitle: function(evt){
+
+  //   let mediaTitleFieldElement = evt.currentTarget;
+
+  //   let newMediaTitle = mediaTitleFieldElement.value;
+
+  //   let mediaElement = mediaTitleFieldElement.closest('.media')
+
+
+  // },
+  handleEnableMediaTitleEditMode: function (evt) {
+
+    let mediaTitleDisplayElement = evt.currentTarget;
+
+    let mediaElement = mediaTitleDisplayElement.closest(".media");
+
+    mediaElement.classList.add("media--edit");
+
+    mediaElement.querySelector(".media__title-field").focus();
+
+  },
+
+  handleValidateNewMediaTitle: function (evt) {
+
+    // On récupèré l'input dont on sort
+    let mediaTitleFieldElement = evt.currentTarget;
+
+    // On récupère sa valeur
+    let newMediaTitle = mediaTitleFieldElement.value;
+
+    // On a également besoin d'accéder à l'élément media pour :
+    // - mettre à jour le titre du media
+    // - quitter le "mode édition"
+    let mediaElement = mediaTitleFieldElement.closest('.media');
+
+    // 1. Mettre à jour le titre de la tache dans la balise <p>
+    let mediaTitleLabelElement = mediaElement.querySelector(".media__title-label");
+
+    // Récupération de l'id de la tache a compléter
+    let mediaId = mediaElement.dataset.id;
+
+    let data = {
+      title: newMediaTitle
+    };
+
+    // On prépare les entêtes HTTP (headers) de la requête
+    // afin de spécifier que les données sont en JSON
+    const httpHeaders = new Headers();
+    httpHeaders.append("Content-Type", "application/json");
+
+    // On consomme l'API pour ajouter en DB
+    const fetchOptions = {
+      method: 'PATCH',
+      mode: 'cors',
+      cache: 'no-cache',
+      // On ajoute les headers dans les options
+      headers: httpHeaders,
+      // On ajoute les données, encodées en JSON, dans le corps de la requête
+      body: JSON.stringify(data)
+    };
+    // Je lance ma requete, sans oublier de fournir les options en 2e param ;)
+    let promise = fetch(app.apiRootURL + "/medias/" + mediaId, fetchOptions);
+
+    // Lorqu'on reçoit la réponse
+    promise.then(function (response) {
+      if (response.status === 204) {
+        // Maintenant que j'ai mon élément <p> je remplace son contenu TEXTUEL
+        mediaTitleLabelElement.textContent = newMediaTitle;
+
+        // On quitte le "mode édition"
+        mediaElement.classList.remove("media--edit");
+
+      } else {
+        console.log("Error Fetch : " + response.status);
+        alert("Impossible de compléter le media(" + response.status + "")
+      }
+    });
+
+  },
+
+  handleValidateNewMediaTitleOnKeydown: function (evt) {
+    if (evt.key === "Enter") {
+      media.handleValidateNewMediaTitle(evt);
+    }
+  },
 
 
 };
