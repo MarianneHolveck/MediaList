@@ -240,6 +240,7 @@ let media = {
 
         // On quitte le "mode édition"
         mediaElement.classList.remove("media--edit");
+        console.log("Modification a bien été faite")
 
       } else {
         console.log("Error Fetch : " + response.status);

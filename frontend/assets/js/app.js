@@ -6,6 +6,7 @@ let app = {
   // exécuter au lancement de l'application
 
   init: function () {
+
     console.log("Module app chargé");
 
     // Initialisation du module mediasList
@@ -17,7 +18,7 @@ let app = {
     // Initialisation du module categoriesList
     categoriesList.init();
 
-    // filters.init();
+    filters.init();
 
   }
 

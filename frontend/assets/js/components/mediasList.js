@@ -33,6 +33,8 @@ let mediasList = {
           // On l'insert dans le dom
 
           mediasList.insertNewMedia(newMediaElement);
+
+          
         }
       });
     });
