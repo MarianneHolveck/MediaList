@@ -25,6 +25,23 @@ let filters = {
       filters.handleShowMediaSeen(event.target.textContent);
     });
 
+    // -------------------------------------------------------------------
+    // Ecoute de l'évènement permettant l'affichage des différentes categories de média
+    // -------------------------------------------------------------------
+
+    let mediaCategoryDivElement = document.querySelector(".filters__media--category");
+
+
+    // On demande à écouter l'event du click sur le bouton contenu dans la div
+    mediaCategoryDivElement.addEventListener("click", (event) => {
+      const isSelect = event.target.nodeName === 'SELECT';
+      if (!isSelect) {
+        return;
+      }
+      // On renvoi dans le handle le contenu du bouton cliqué
+      filters.handleShowMediaCategory(event.target.value);
+    });
+
 
   },
 
@@ -53,8 +70,6 @@ let filters = {
     if (mediaFilterButtonPressed === "Tous") {
       filters.showAllMedia();
     }
-
-
   },
 
 
@@ -174,5 +189,32 @@ let filters = {
 
   },
 
+  // -------------------------------------------------------------------
+  // Gestion de l'affichage des catégories de média
+  // -------------------------------------------------------------------
+
+
+  handleShowMediaCategory: function (evt) {
+
+    let mediaFilterSelectedCategory = evt;
+
+    console.log(mediaFilterSelectedCategory);
+    let allMediasDiv = document.querySelector(".medias")
+
+    let allMedias = allMediasDiv.querySelectorAll(".media")
+
+    for (let media of allMedias) {
+      let dataCategory = media.getAttribute('data-category')
+
+      if (dataCategory === evt) {
+        media.classList.remove('is-hidden');
+      } else if (evt === 'Toutes les catégories') {
+        media.classList.remove('is-hidden')
+      } else {
+        media.classList.add('is-hidden');
+      }
+
+    }
+  }
 
 };
