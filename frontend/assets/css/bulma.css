@@ -1240,7 +1240,7 @@ fieldset[disabled] .button.is-link.is-inverted.is-outlined {
 }
 
 .button.is-info {
-  background-color: #3298dc;
+  /* background-color: #3298dc; */
   border-color: transparent;
   color: #fff;
 }
@@ -1363,7 +1363,7 @@ fieldset[disabled] .button.is-info.is-inverted.is-outlined {
 }
 
 .button.is-success {
-  background-color: #48c774;
+  background-color: #7858a5;
   border-color: transparent;
   color: #fff;
 }
@@ -1609,7 +1609,7 @@ fieldset[disabled] .button.is-warning.is-inverted.is-outlined {
 }
 
 .button.is-danger {
-  background-color: #f14668;
+  background-color: #ba2869;
   border-color: transparent;
   color: #fff;
 }
@@ -3273,7 +3273,7 @@ a.tag:hover {
 
 /* Bulma Form */
 .input, .textarea, .select select {
-  background-color: white;
+  /* background-color: white; */
   border-color: #dbdbdb;
   border-radius: 4px;
   color: #363636;

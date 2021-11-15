@@ -1,18 +1,47 @@
-/* body {
-  background: rgb(79, 47, 59);
-} */
+body {
+  background: rgb(47, 73, 79);
+}
+
+.button {
+  background-color: rgb(97, 194, 216);
+  border: white 1px solid;
+  border-radius: 10px;
+}
+
+.is-info {
+  background-color: #dc307c;
+}
 
 .container {
   padding: 0.5rem;
 }
 
 .header {
-  background-color: #ededed;
+  background-color: rgb(97, 194, 216);
+  border-radius: 10px;
   padding: 1.2rem;
+}
+
+.media__title-field {
+  background-color: rgb(142, 207, 221);
+  border-radius: 10px;
+}
+
+select {
+  background-color: #db74a2;
+  border-radius: 10px; 
+}
+
+option {
+  color: white;
 }
 
 .logo__title {
   margin-bottom: 0.5rem;
+}
+
+.media__category {
+  color: #ffffff;
 }
 
 .filters__media--completion.buttons {
@@ -25,6 +54,13 @@
 
 .media {
   margin: 1.5rem 0 0 0;
+}
+
+.media--tosee .media__content {
+  background-color: rgb(142, 207, 221);
+  border: none;
+  border-radius: 10px;
+  color: black
 }
 
 .media,
@@ -51,9 +87,6 @@
   display: none;
 }
 
-.media__category {
-  color: #b1b1b1;
-}
 
 .media__buttons {
   margin-left: 1rem;
@@ -79,7 +112,8 @@
 
 .media--seen .media__content {
   display: flex;
-  background-color: #f7f7f7;
+  background-color: rgb(37, 58, 63);
+  border-radius: 10px;
   border: none;
 }
 
@@ -101,6 +135,8 @@
 
 .media--add .media__content {
   border-color: #78b6df;
+  background-color: rgb(97, 194, 216);
+  border-radius: 10px;
 }
 
 .media--add .media__title {

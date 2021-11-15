@@ -187,6 +187,7 @@ let filters = {
       }
     }
 
+
   },
 
   // -------------------------------------------------------------------
@@ -214,6 +215,25 @@ let filters = {
         media.classList.add('is-hidden');
       }
 
+    }
+
+    // On gère l'affichage des boutons de vu, pour qu'ils se reset
+    let mediaAllFilterElement = document.querySelectorAll(".filters__media--completion button")
+
+    for (let button of mediaAllFilterElement) {
+      let buttonContent = button.textContent;
+      if (buttonContent === "Tous") {
+        button.classList.add("is-info")
+        button.classList.add("is-selected")
+      }
+      if (buttonContent === "Pas Vu") {
+        button.classList.remove("is-info")
+        button.classList.remove("is-selected")
+      }
+      if (buttonContent === "Vu") {
+        button.classList.remove("is-info")
+        button.classList.remove("is-selected")
+      }
     }
   }
 
