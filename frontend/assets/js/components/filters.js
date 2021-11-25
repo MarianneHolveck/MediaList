@@ -100,7 +100,6 @@ let filters = {
     }
 
     // On gère l'affichage des buttons cliqué :
-    // Comme tous les bouttons ont la même classe il va falloir tous les récupérer et les vérifiés un par un
     let mediaAllFilterElement = document.querySelectorAll(".filters__media--completion button")
 
     for (let button of mediaAllFilterElement) {

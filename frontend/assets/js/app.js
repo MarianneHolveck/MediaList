@@ -1,9 +1,7 @@
 let app = {
 
-  // On conserve la route
+  
   apiRootURL: 'http://localhost:8080',
-  // La méthode init contient le code que l'on veut 
-  // exécuter au lancement de l'application
 
   init: function () {
 

@@ -18,15 +18,11 @@ let categoriesList = {
       // J'envoi ma requete et je reçois une "promesse" de réponse
       let promise = fetch( app.apiRootURL + "/categories" );
   
-      // ENSUITE, comme je ne peux pas savoir QUAND je vais recevoir la réponse
-      // j'indique a cette promesse QUOI faire lorsque la réponse arrivera
       promise.then( function( response ) 
       {
         let jsonPromise = response.json();
         jsonPromise.then( function( jsonContentFromResponse ) 
         {
-          // ENFIN j'ai accès aux données contenues dans la réponse
-          // je peux en faire ce que j'en veux
           categoriesList.createSelectFromCategories( jsonContentFromResponse );
         } );
       } );
@@ -41,8 +37,7 @@ let categoriesList = {
     //======================================
   
     /**
-     * Méthode permettant de créer les <select> des catégories
-     * et de les ajouter au DOM
+     * 
      * @param {Array} jsonContentFromResponse 
      */
     createSelectFromCategories : function( jsonContentFromResponse )
